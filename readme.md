@@ -5,6 +5,15 @@
 
 #### 软件架构
 软件架构说明
+1. springboot
+2. mysql
+3. lombok
+4. mybatis-plus
+5. druid
+6. hutool-all
+7. fastjson
+8. webmagic-core
+9. webmagic-extension
 
 
 #### 安装教程
