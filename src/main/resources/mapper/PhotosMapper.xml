@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.webgallery.mapper.PhotosMapper">
+  <resultMap id="BaseResultMap" type="com.webgallery.domain.Photos">
+    <!--@mbg.generated-->
+    <!--@Table `photo_gallery`.`photos`-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="photos_type" jdbcType="CHAR" property="photosType" />
+    <result column="photos_name" jdbcType="VARCHAR" property="photosName" />
+    <result column="photos_size" jdbcType="INTEGER" property="photosSize" />
+    <result column="photos_cover" jdbcType="LONGVARCHAR" property="photosCover" />
+    <result column="photos_url" jdbcType="VARCHAR" property="photosUrl" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    `id`, `create_time`, `photos_type`, `photos_name`, `photos_size`, `photos_cover`, 
+    `photos_url`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from `photo_gallery`.`photos`
+    where `id` = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from `photo_gallery`.`photos`
+    where `id` = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.webgallery.domain.Photos">
+    <!--@mbg.generated-->
+    insert into `photo_gallery`.`photos` (`id`, `create_time`, `photos_type`, 
+      `photos_name`, `photos_size`, `photos_cover`, 
+      `photos_url`)
+    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{photosType,jdbcType=CHAR}, 
+      #{photosName,jdbcType=VARCHAR}, #{photosSize,jdbcType=INTEGER}, #{photosCover,jdbcType=LONGVARCHAR}, 
+      #{photosUrl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.webgallery.domain.Photos">
+    <!--@mbg.generated-->
+    insert into `photo_gallery`.`photos`
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        `id`,
+      </if>
+      <if test="createTime != null">
+        `create_time`,
+      </if>
+      <if test="photosType != null and photosType != ''">
+        `photos_type`,
+      </if>
+      <if test="photosName != null and photosName != ''">
+        `photos_name`,
+      </if>
+      <if test="photosSize != null">
+        `photos_size`,
+      </if>
+      <if test="photosCover != null and photosCover != ''">
+        `photos_cover`,
+      </if>
+      <if test="photosUrl != null and photosUrl != ''">
+        `photos_url`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="photosType != null and photosType != ''">
+        #{photosType,jdbcType=CHAR},
+      </if>
+      <if test="photosName != null and photosName != ''">
+        #{photosName,jdbcType=VARCHAR},
+      </if>
+      <if test="photosSize != null">
+        #{photosSize,jdbcType=INTEGER},
+      </if>
+      <if test="photosCover != null and photosCover != ''">
+        #{photosCover,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="photosUrl != null and photosUrl != ''">
+        #{photosUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.webgallery.domain.Photos">
+    <!--@mbg.generated-->
+    update `photo_gallery`.`photos`
+    <set>
+      <if test="createTime != null">
+        `create_time` = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="photosType != null and photosType != ''">
+        `photos_type` = #{photosType,jdbcType=CHAR},
+      </if>
+      <if test="photosName != null and photosName != ''">
+        `photos_name` = #{photosName,jdbcType=VARCHAR},
+      </if>
+      <if test="photosSize != null">
+        `photos_size` = #{photosSize,jdbcType=INTEGER},
+      </if>
+      <if test="photosCover != null and photosCover != ''">
+        `photos_cover` = #{photosCover,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="photosUrl != null and photosUrl != ''">
+        `photos_url` = #{photosUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where `id` = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.webgallery.domain.Photos">
+    <!--@mbg.generated-->
+    update `photo_gallery`.`photos`
+    set `create_time` = #{createTime,jdbcType=TIMESTAMP},
+      `photos_type` = #{photosType,jdbcType=CHAR},
+      `photos_name` = #{photosName,jdbcType=VARCHAR},
+      `photos_size` = #{photosSize,jdbcType=INTEGER},
+      `photos_cover` = #{photosCover,jdbcType=LONGVARCHAR},
+      `photos_url` = #{photosUrl,jdbcType=VARCHAR}
+    where `id` = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

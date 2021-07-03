@@ -1,0 +1,83 @@
+# 开发环境配置
+server:
+  # 服务器的HTTP端口，默认为80
+  port: 8181
+  servlet:
+    # 应用的访问路径
+    context-path: /
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    threads:
+      max: 800 # tomcat最大线程数，默认为200
+      min-spare: 30 # Tomcat启动初始化的线程数，默认值25
+# PageHelper分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+# MyBatis
+mybatis-plus:
+  # 搜索指定包别名
+  typeAliasesPackage: com.mm131.webgallery.domain
+  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+  mapperLocations: classpath*:mapper/**/*Mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+  global-config:
+    #刷新mapper 调试神器
+    refresh: true
+    db-config:
+      #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+      id-type: ASSIGN_ID
+      #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+      field-strategy: not_empty
+      #驼峰下划线转换
+      db-column-underline: true
+      #数据库大写下划线转换
+      #capital-mode: true
+      #序列接口实现类配置
+      #key-generator: com.baomidou.springboot.xxx
+      #逻辑删除配置（下面3个配置）
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      #数据库类型
+      db-type: mysql
+# Spring配置
+spring:
+  # redis配置
+  redis:
+    database: 1
+    # 内网 127.0.0.1
+    # 公网  119.91.115.251
+    host: 119.91.115.251
+    port: 6380
+    password: PZeShDbp1K
+    timeout: 5000ms           # 连接超时时长（毫秒）
+    lettuce:
+      pool:
+        max-active: 1000  # 连接池最大连接数（使用负值表示没有限制）
+        max-wait: -1ms    # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-idle: 10      # 连接池中的最大空闲连接
+        min-idle: 5       # 连接池中的最小空闲连接
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  profiles:
+    #druid 正式
+    #dev 测试
+    active: druid
+  # 文件上传
+  servlet:
+    multipart:
+      # 单个文件大小
+      max-file-size:  10MB
+      # 设置总上传的文件大小
+      max-request-size:  20MB
+  # 服务模块
+  devtools:
+    restart:
+      # 热部署开关
+      enabled: true
