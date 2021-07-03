@@ -1,10 +1,11 @@
 # 开发环境配置
 server:
   # 服务器的HTTP端口，默认为80
-  port: 8181
+  port: 80
   servlet:
     # 应用的访问路径
     context-path: /
+    application-display-name: "网络图库"
   tomcat:
     # tomcat的URI编码
     uri-encoding: UTF-8
